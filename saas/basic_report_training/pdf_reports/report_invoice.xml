@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <!-- Goal is to add new fields in the existing invoice report -->
+    <record id="report_invoice_document_inherited" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <data>
+                <!-- Let's add Team and Team Leader after Invoice Number i.e. <h2> tag -->
+                <xpath expr="//h2" position="after">
+                    This invoice coming from team <strong t-field="o.team_id"/>
+                    lead by <strong t-field="o.team_id.user_id"/>
+                </xpath>
+            </data>
+        </field>
+        <field name="inherit_id" ref="account.report_invoice_document"/>
+        <field name="key">basic_report_training.report_invoice_document_inherited</field>
+        <field name="mode">extension</field>
+        <field name="model" eval="False"/>
+        <field name="name">report.invoice.document.inherited</field>
+        <field name="priority">99</field>
+        <field name="type">qweb</field>
+    </record>
+</odoo>

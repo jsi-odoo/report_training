@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <!-- Paperformat -->
+    <record id="paperformat_custome_invoice_report" model="report.paperformat">
+        <field name="name">Custom A4</field>
+        <field name="format">A4</field>
+        <field name="margin_left">4</field>
+        <field name="margin_right">4</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">15</field>
+        <field name="header_spacing">60</field>
+        <field name="orientation">Portrait</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_invoice_custom" model="ir.actions.report">
+        <field name="name">Billing Report</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="model">account.move</field>
+        <field name="report_name">basic_report_training.report_invoice_custom</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">list,form</field>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="multi" eval="False"/>
+        <field name="attachment" eval="False"/>
+        <field name="attachment_use" eval="False"/>
+        <field name="paperformat_id" ref="basic_report_training.paperformat_custome_invoice_report"/>
+    </record>
+</odoo>

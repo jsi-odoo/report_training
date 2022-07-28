@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <!-- Add data in Partner ledger -->
+    <record id="line_template_partner_ledger_report_custom" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <data>
+                <t t-foreach="lines['lines']" position="before">
+                    <h2>Testinggg</h2>
+                    <!-- <h2><t t-esc="env.context"/></h2> -->
+                </t>
+            </data>
+        </field>
+        <field name="inherit_id" ref="account_reports.line_template_partner_ledger_report"/>
+        <field name="key">basic_report_training.line_template_partner_ledger_report_custom</field>
+        <field name="mode">extension</field>
+        <field name="model" eval="False"/>
+        <field name="name">line.template.partner.ledger.report</field>
+        <field name="priority">99</field>
+        <field name="type">qweb</field>
+    </record>
+</odoo>

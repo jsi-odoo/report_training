@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+    <record id="report_invoice_custom_document" model="ir.ui.view">
+        <field name="arch" type="xml">
+            <t t-name="report_invoice_custom_document">
+                <t t-call="web.external_layout">
+                    <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                    <div class="page">
+                        <h2>
+                            <span>Billing Number: </span>
+                            <span t-if="o.name != '/'" t-field="o.name"/>
+                        </h2>
+                        <div id="informations" class="row mt32 mb32">
+                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date">
+                                <strong>Invoice Date:</strong>
+                                <p class="m-0" t-field="o.invoice_date"/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_origin">
+                                <strong>Source:</strong>
+                                <p class="m-0" t-field="o.invoice_origin"/>
+                            </div>
+                        </div>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">
+                                        <span>Description</span>
+                                    </th>
+                                    <th class="text-right">
+                                        <span>Price</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="invoice_tbody">
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-field="line.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </field>
+        <field name="key">basic_report_training.report_invoice_custom_document</field>
+        <field name="mode">primary</field>
+        <field name="name">report_invoice_custom_document</field>
+        <field name="type">qweb</field>
+    </record>
+    <record id="report_invoice_custom" model="ir.ui.view" context="{'studio': True}">
+        <field name="arch" type="xml">
+            <t t-name="account.report_invoice_with_payments_copy_1">
+                <t t-call="web.html_container">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="lang" t-value="o.partner_id.lang"/>
+                        <t t-call="basic_report_training.report_invoice_custom_document" t-lang="lang"/>
+                    </t>
+                </t>
+            </t>
+        </field>
+        <field name="key">basic_report_training.report_invoice_custom</field>
+        <field name="mode">primary</field>
+        <field name="name">report.invoice.custom</field>
+        <field name="type">qweb</field>
+  </record>
+</odoo>
