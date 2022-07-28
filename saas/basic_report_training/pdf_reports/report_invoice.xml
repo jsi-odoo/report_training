@@ -12,9 +12,7 @@
             </data>
         </field>
         <field name="inherit_id" ref="account.report_invoice_document"/>
-        <field name="key">basic_report_training.report_invoice_document_inherited</field>
         <field name="mode">extension</field>
-        <field name="model" eval="False"/>
         <field name="name">report.invoice.document.inherited</field>
         <field name="priority">99</field>
         <field name="type">qweb</field>

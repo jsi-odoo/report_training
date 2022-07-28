@@ -48,12 +48,11 @@
                 </t>
             </t>
         </field>
-        <field name="key">basic_report_training.report_invoice_custom_document</field>
         <field name="mode">primary</field>
         <field name="name">report_invoice_custom_document</field>
         <field name="type">qweb</field>
     </record>
-    <record id="report_invoice_custom" model="ir.ui.view" context="{'studio': True}">
+    <record id="report_invoice_custom" model="ir.ui.view">
         <field name="arch" type="xml">
             <t t-name="account.report_invoice_with_payments_copy_1">
                 <t t-call="web.html_container">
@@ -64,7 +63,6 @@
                 </t>
             </t>
         </field>
-        <field name="key">basic_report_training.report_invoice_custom</field>
         <field name="mode">primary</field>
         <field name="name">report.invoice.custom</field>
         <field name="type">qweb</field>
